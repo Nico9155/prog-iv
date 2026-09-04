@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="/src/main.js"></script>
+    <link rel="stylesheet" href="/src/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MUNI-IT</title>
+</head>
+
+<main>
+    <div class="container-fluid"> <!-- Obliga a que ocupe 100% de la pantalla -->
+        <div class="row min-vh-100">
+            <div class="col-12 col-md-3 menu-lateral text-center text-md-start">
+                <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
+                    <!-- Display: flex; Ordenar de arriba a abajo; Evitar redimensionar elementos ; Padding 3==1rem==16px -->
+                    <!-- Margin bottom 3; Margin-medium-bottom 0; Margin-medium -->
+                    <a href="/"
+                        class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                        <span class="fs-4 fw-bold text-white"><p>MUNI-IT</p></span>
+                    </a>
+                    <p class="fs-6 pb-3 mb-0 off">Gobierno Municipal de la Ciudad</p>
+                    <p class="fs-6 py-1 mb-0 off">NAVEGACIÓN</p>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="./soporte-incidencias.html" class="nav-link link-dark" aria-current="page">
+                                <p class="fs-6 mb-0 off-light">Incidencias asignadas</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link current">
+                                <p class="fs-6 mb-0">Categorías</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./soporte-articulos.html" class="nav-link link-dark">
+                                <p class="fs-6 mb-0 off-light">Artículos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="row">
+                    <div class="col-12 col-md-9">
+                        <h1 class="fs-3 fs-md-1">Bandeja de incidencias asignadas</h1>
+                    </div>
+                    <div class="col-12 col-md-3 dropdown">
+                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                            id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <p class="fs-5 fs-md-3">Ing. Ana Gómez</p>
+                        </a>
+                        <p>Soporte en sistemas</p>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+</html>
