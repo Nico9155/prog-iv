@@ -1,0 +1,39 @@
+/*
+Colores globales 
+*/
+.color-aside{
+    background-color: #0F191D;
+}
+.color-aside a:active {
+    background-color: #0D9488;
+}
+.color-aside a:hover {
+    background-color: #0D9488;
+}
+
+.color-aside-letra{
+    color: #94A3B8;
+}
+
+.main{
+    background-color: #E2E8F0;
+}
+
+.color{
+    background-color:red;
+}
+.logo{
+    width: 150px;
+    height: 100px;
+}
+.h1-aside{
+    color: #94A3B8;
+}
+.user{
+    width: 75px;
+    height: 75px;
+}
+
+.usuario{
+    background-color: white;
+}
