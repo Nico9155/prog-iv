@@ -1,0 +1,16 @@
+div.menu-lateral {
+    background-color: #0F191D;
+}
+
+a.nav-link.current {
+    background-color: #0D9488;
+    color: white;
+}
+
+p.off{
+    color: #64748B;
+}
+
+p.off-light {
+    color: #94A3B8;
+}
