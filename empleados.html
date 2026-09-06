@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - MUNI-IT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="marca">
+            <span style="font-size: 32px; color: #0f9d86;"></span>
+            <div class="textos-marca">
+                <h2>MUNI-IT</h2>
+                <p>Gobierno Municipal de la Ciudad</p>
+            </div>
+        </div>
+
+        <nav class="menu-navegacion">
+            <span class="titulo-menu">NAVEGACIÓN</span>
+            <ul>
+                <li class="item-menu activo">
+                    <a href = "index.html"><span class = "icono"></span> Dashboard</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "incidencias.html"><span class = "icono"></span> Incidencias</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "reportes.html"><span class = "icono"></span> Reportes</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "empleados.html"><span class = "icono"></span> Administrar empleados</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class = "contenido-principal">
+        <header class = "cabecera">
+            <h1>Panel de control de incidencias</h1>
+            <div class = "perfil-usuario">
+                <button class = "boton-notificaciones"></button>
+                <div class = "info-usuario">
+                    <span class = "nombre"> Lucia Carrazzoni</span>
+                    <span class = "rol"> Directora Municipal</span>
+                </div>
+                <div class = "avatar-usuario"></div>
+            </div>
+        </header>
+        <div class = "dashboard-contenedor">
+            <div class = "encabezado-vista" style = "display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h2> Gestión de empleados</h2>
+                    <p> Administra los accesos, roles y contraseñas del personal</p>
+                </div>
+                <button class = "boton-guardar" style="font-size: 14px; padding: 10px 20px;">+ Nuevo Empleado</button>
+            </div>
+            <div class = "contenedor-tabla">
+                <table class = "tabla-incidencias">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre y Apellido</th>
+                            <th>Usuario</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Carlos Mendoza</td>
+                            <td>cmendoza</td>
+                            <td>Director</td>
+                            <td><span class = "etiqueta-verde">Activo</span></td>
+                            <td class = "celda-acciones">
+                                <button class = "boton-accion" title = "Editar"> Editar</button>
+                                <button class = "boton-accion" title = "Cambiar Contraseña"> Cambiar contraseña</button>
+                                <button class = "boton-accion-peligro" title = "Desactivar"> Desactivar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Juan Pérez</td>
+                            <td>jperez</td>
+                            <td>Soporte</td>
+                            <td><span class = "etiqueta-roja">Inactivo</span></td>
+                            <td class = "celda-acciones">
+                                <button class = "boton-accion" title = "Editar"> Editar</button>
+                                <button class = "boton-accion" title = "Cambiar Contraseña"> Cambiar contraseña</button>
+                                <button class = "boton-accion-verde" title = "Activar"> Activar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
