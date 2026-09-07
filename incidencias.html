@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - MUNI-IT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="marca">
+            <span style="font-size: 32px; color: #0f9d86;"></span>
+            <div class="textos-marca">
+                <h2>MUNI-IT</h2>
+                <p>Gobierno Municipal de la Ciudad</p>
+            </div>
+        </div>
+
+        <nav class="menu-navegacion">
+            <span class="titulo-menu">NAVEGACIÓN</span>
+            <ul>
+                <li class="item-menu activo">
+                    <a href = "index.html"><span class = "icono"></span> Dashboard</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "incidencias.html"><span class = "icono"></span> Incidencias</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "reportes.html"><span class = "icono"></span> Reportes</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "empleados.html"><span class = "icono"></span> Administrar empleados</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class = "contenido-principal">
+        <header class = "cabecera">
+            <h1>Panel de control de incidencias</h1>
+            <div class = "perfil-usuario">
+                <button class = "boton-notificaciones"></button>
+                <div class = "info-usuario">
+                    <span class = "nombre"> Lucia Carrazzoni</span>
+                    <span class = "rol"> Directora Municipal</span>
+                </div>
+                <div class = "avatar-usuario"></div>
+            </div>
+        </header>
+        <div class="dashboard-contenedor">
+            <div class="encabezado-vista">
+                <h2> Incidencias pendientes de asignación</h2>
+                <p> Selecciona un técnico de soporte para cada incidencia o cancela las solicitudes inválidas</p>
+            </div>
+            <div class="contenedor-tabla">
+                <table class="tabla-incidencias">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Artículo</th>
+                            <th>Solicitante (Área)</th>
+                            <th>Prioridad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#0142</td>
+                            <td>30/08/2026</td>
+                            <td>Impresora Laser HP</td>
+                            <td>Marta (Tesorería)</td>
+                            <td><span class="etiqueta-media">Media</span></td>
+                            <td class="celda-acciones">
+                                <select class="selector-tecnico">
+                                    <option value="">Asignar técnico</option>
+                                    <option value="1">Juan Pérez (Soporte)</option>
+                                    <option value="2">Ana Gómez (Redes)</option>
+                                </select>
+                                <button class="boton-guardar">Asignar</button>
+                                <button class="boton-cancelar">Cancelar</button>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>#0143 </td>
+                            <td>30/08/2026 </td>
+                            <td>Monitor 24" Dell </td>
+                            <td>Luis (Catastro) </td>
+                            <td><span class = "etiqueta-alta"> Alta </span></td>
+                            <td class = "celda-acciones">
+                                <select class = "selector-tecnico">
+                                    <option value = ""> Asignar técnico </option>
+                                    <option value = "1"> Juan Pérez (Soporte) </option>
+                                    <option value = "2"> Ana Gómez (Redes) </option>
+                                </select>
+                                <button class = "boton-guardar"> Asignar </button>
+                                <button class = "boton-cancelar"> Cancelar </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

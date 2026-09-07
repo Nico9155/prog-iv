@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - MUNI-IT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="marca">
+            <span style="font-size: 32px; color: #0f9d86;"></span>
+            <div class="textos-marca">
+                <h2>MUNI-IT</h2>
+                <p>Gobierno Municipal de la Ciudad</p>
+            </div>
+        </div>
+
+        <nav class="menu-navegacion">
+            <span class="titulo-menu">NAVEGACIÓN</span>
+            <ul>
+                <li class="item-menu activo">
+                    <a href = "index.html"><span class = "icono"></span> Dashboard</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "incidencias.html"><span class = "icono"></span> Incidencias</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "reportes.html"><span class = "icono"></span> Reportes</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "empleados.html"><span class = "icono"></span> Administrar empleados</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class = "contenido-principal">
+        <header class = "cabecera">
+            <h1>Panel de control de incidencias</h1>
+            <div class = "perfil-usuario">
+                <button class = "boton-notificaciones"></button>
+                <div class = "info-usuario">
+                    <span class = "nombre"> Lucia Carrazzoni</span>
+                    <span class = "rol"> Directora Municipal</span>
+                </div>
+                <div class = "avatar-usuario"></div>
+            </div>
+        </header>
+        <div class = "dashboard-contenedor">
+            <section class = "cuadricula-tarjetas"> 
+                <article class = "tarjeta">
+                    <div class = "tarjeta-encabezado">
+                        <span class = "titulo-tarjeta">TOTAL INCIDENCIAS</span>
+                        <span class = "icono-fondo-gris"></span>
+                    </div>
+                    <p class = "numero-grande">184</p>
+                </article>
+
+                <article class = "tarjeta">
+                    <div class = "tarjeta-encabezado">
+                        <span class = "titulo-tarjeta">PENDIENTES</span>
+                        <span class = "icono-fondo-amarillo"></span>
+                    </div>
+                    <p class = "numero-grande color-amarillo">32</p>
+                </article>
+
+                <article class = "tarjeta">
+                    <div class = "tarjeta-encabezado">
+                        <span class = "titulo-tarjeta">EN PROCESO</span>
+                        <span class = "icono-fondo-azul"></span>
+                    </div>
+                    <p class = "numero-grande color-azul">45</p>
+                </article>
+
+                <article class = "tarjeta">
+                    <div class = "tarjeta-encabezado">
+                        <span class = "titulo-tarjeta">FINALIZADAS</span>
+                        <span class = "icono-fondo-verde"></span>
+                    </div>
+                    <p class = "numero-grande color-verde">107</p>
+                </article>
+            </section>
+            <section class = "graficos"
+                <article class = "tarjeta">
+                    <h3 class = "titulo-seccion"> Incidencias por fecha (últimos 7 días)</h3>
+                    <div class= "contenedor-placeholder"
+                        <span class = "placeholder"> Gráfico de barras</span>
+                    </div>
+                </article>
+                <article class = "tarjeta">
+                    <h3 class = "titulo-seccion"> Distribución por estado</h3>
+                    <div class = "contenedor-placeholder">
+                        <span class = "placeholder">Gráfico Circular</span>
+                    </div>
+                </article>
+            </section>
+            <section class = "seccion-prioritarias" >
+                <article class = "tarjeta">
+                    <h3 class = "titulo-seccion"> Incidencias prioritarias activas (alta prioridad)</h3>
+                    <div class = "lista-incidencias">
+                        <div class = "item-incidencia">
+                            <div class = "incidencia-info">
+                                <div class = "icono-alerta"></div>
+                                <div class = "textos-incidencia">
+                                    <h4> Fallo total en sistema de liquidación de sueldos </h4>
+                                    <p> Área: Recursos Humanos — Solicitante: Pedro Ramírez </p>
+                                </div>
+                            </div>
+                            <div class = "incidencia-etiquetas">
+                                <span class = "etiqueta-alta"> Alta </span>
+                                <span class = "etiqueta-proceso"> En Proceso </span>
+                            </div>
+                        </div>
+                        <div class = "item-incidencia">
+                            <div class = "incidencia-info">
+                                <div class = "icono-alerta"></div>
+                                <div class = "textos-incidencia">
+                                    <h4> Servidor de catastro desconectado de red municipal </h4>
+                                    <p> Área: Obras Públicas — Solicitante: Ing. Alicia Ortega </p>
+                                </div>
+                            </div>
+                            <div class = "incidencia-etiquetas">
+                                <span class = "etiqueta-alta"> Alta </span>
+                                <span class = "etiqueta-pendiente"> Pendiente </span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

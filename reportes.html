@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - MUNI-IT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="marca">
+            <span style="font-size: 32px; color: #0f9d86;"></span>
+            <div class="textos-marca">
+                <h2>MUNI-IT</h2>
+                <p>Gobierno Municipal de la Ciudad</p>
+            </div>
+        </div>
+
+        <nav class="menu-navegacion">
+            <span class="titulo-menu">NAVEGACIÓN</span>
+            <ul>
+                <li class="item-menu activo">
+                    <a href = "index.html"><span class = "icono"></span> Dashboard</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "incidencias.html"><span class = "icono"></span> Incidencias</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "reportes.html"><span class = "icono"></span> Reportes</a>
+                </li>
+                <li class="item-menu">
+                    <a href = "empleados.html"><span class = "icono"></span> Administrar empleados</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class = "contenido-principal">
+        <header class = "cabecera">
+            <h1>Panel de control de incidencias</h1>
+            <div class = "perfil-usuario">
+                <button class = "boton-notificaciones"></button>
+                <div class = "info-usuario">
+                    <span class = "nombre"> Lucia Carrazzoni</span>
+                    <span class = "rol"> Directora Municipal</span>
+                </div>
+                <div class = "avatar-usuario"></div>
+            </div>
+        </header>
+        <div class = "dashboard-contenedor">
+            <div class = "encabezado-vista">
+                <h2> Generación de reportes</h2>
+                <p> Configura los parámetros para exportar las estadísticas de incidencias.</p>
+            </div>
+            <article class = "tarjeta contenedor-filtros">
+                <form class = "formulario-reportes">
+                    <div class = "grupo-control">
+                        <label for = "fecha-desde">Fecha desde</label>
+                        <input type = "date" id =  "fecha-desde" class = "input-formulario">
+                    </div>
+
+                    <div class = "grupo-control">
+                        <label for = "fecha-hasta"> Fecha hasta</label>
+                        <input type = "date" id = "fecha-hasta" class = "input-formulario">
+                    </div>
+
+                    <div class = "grupo-control">
+                        <label for = "estado">Estado de incidencia</label>
+                        <select id = "estado" class = "input-formulario">
+                            <option value = "todos">Todos los estados</option>
+                            <option value = "pendiente">Pendientes</option>
+                            <option value = "proceso">En Proceso</option>
+                            <option value = "finalizada">Finalizadas</option>
+                            <option value ="cancelada">Canceladas</option>
+                        </select>
+                    </div>
+
+                    <div class = "grupo-control">
+                        <label for = "prioridad">Prioridad</label>
+                        <select id = "prioridad" class = "input-formulario">
+                            <option value = "todas">Todas las prioridades</option>
+                            <option value = "alta">Alta</option>
+                            <option value = "media">Media</option>
+                            <option value = "baja">Baja</option>
+                        </select>
+                    </div>
+                    <div class = "acciones-formulario">
+                        <button type = "button" class = "boton-guardar boton-largo"> Generar reporte en PDF</button>
+                    </div>
+                </form>
+            </article>
+
+        </div>
+    </main>
+</body>
+</html>
