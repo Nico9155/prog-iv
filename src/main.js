@@ -1,3 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
 import './css/municipales.css'
+import './css/style.css'
+import './css/main.css'
