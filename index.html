@@ -10,9 +10,23 @@
 
 <body>
 <div class="container-fluid login-fondo ">   
-<div class="row justify-content-center ">
-<div class="col-10  min-vh-100 login">
-
+<div class="row justify-content-center  align-items-center min-vh-100">
+<div class="col-6 ">
+    <!-- Poner donde se envia el formulario-->
+<div id="Formulario" class="card login p-4">
+    <p class="h2"> Inicio de sesión municipal </p>
+<form action="" method="POST" class="">
+    <div >
+      <label for="email" class="form-label">Usuario:</label>
+      <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div>
+      <label for="password" class="form-label">Contraseña:</label>
+      <input type="password" id="password" name="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Ingresar</button>
+  </form>
+</div>
 
 </div>
 
