@@ -7,7 +7,6 @@
     "start": "node --watch index.js"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {

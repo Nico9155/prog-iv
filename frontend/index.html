@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <script type="module" src="./src/main.js"></script>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./src/js/login.js" type="module" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Entrar al sitio</title>
 </head>
 
 <body>
-    <div class="container-fluid login-fondo ">
-        <div class="row justify-content-center  align-items-center min-vh-100">
-            <div class="col-6 ">
-                <div id="Formulario" class="card login p-4">
-                    <p class="h2"> Inicio de sesión municipal </p>
-                    <form action="" method="POST" class="">
-                        <div>
-                            <label for="usuario" class="form-label">Usuario:</label>
-                            <input type="text" id="usuario" name="usuario" class="form-control" required>
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center min-vh-100 bg-light">
+            <div class="col-6">
+                <div class="card p-4">
+                    <h2 class="h2 mb-4 text-center">Municipalidad IT</h2>
+                    <form id="formulario-login">
+                        <div class="mb-3">
+                            <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario"
+                                autocomplete="username" required>
                         </div>
-                        <div>
-                            <label for="password" class="form-label">Contraseña:</label>
-                            <input type="password" id="password" name="password" class="form-control" required>
+                        <div class="mb-3">
+                            <input type="password" id="password" name="password" class="form-control"
+                                placeholder="Contraseña" autocomplete="current-password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Ingresar</button>
+                        <button type="submit" class="btn btn-primary mt-2 w-100">Ingresar</button>
                     </form>
                 </div>
             </div>
