@@ -66,7 +66,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tabla-empleados-body">
                         <tr>
                             <td>#001</td>
                             <td>Carlos Mendoza</td>
@@ -96,5 +96,44 @@
             </div>
         </div>
     </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const respuesta = await fetch('/api/usuarios');
+                const empleados = await respuesta.json();
+
+                const tbody = document.getElementById('tabla-empleados-body');
+                tbody.innerHTML = ''; 
+
+                empleados.forEach(emp => {
+                    const estadoClase = emp.activo === 1 ? 'etiqueta-verde' : 'etiqueta-roja';
+                    const estadoTexto = emp.activo === 1 ? 'Activo' : 'Inactivo';
+                    const botonEstadoTexto = emp.activo === 1 ? 'Desactivar' : 'Activar';
+                    const botonEstadoClase = emp.activo === 1 ? 'boton-accion-peligro' : 'boton-accion-verde';
+
+                    const fila = document.createElement('tr');
+                    fila.innerHTML = `
+                        <td>#${emp.id_usuario}</td>
+                        <td>${emp.nombres} ${emp.apellidos}</td>
+                        <td>${emp.usuario}</td>
+                        <td>${emp.rol}</td>
+                        <td><span class="${estadoClase}">${estadoTexto}</span></td>
+                        <td class="celda-acciones">
+                            <button class="boton-accion" title="Editar">Editar</button>
+                            <button class="boton-accion" title="Cambiar Contraseña">Contraseña</button>
+                            <button class="${botonEstadoClase}" title="${botonEstadoTexto}">${botonEstadoTexto}</button>
+                        </td>
+                    `;
+                    tbody.appendChild(fila);
+                });
+
+            } catch (error) {
+                console.error("Error al cargar los empleados:", error);
+            }
+        });
+    </script>
+
 </body>
 </html>
