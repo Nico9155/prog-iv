@@ -2,29 +2,47 @@
 <html lang="es">
 
 <head>
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="./src/js/login.js" type="module" defer></script>
+    <script src="./src/main.js" type="module" defer></script>
+    <script src="login.js" type="module" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/pages/css/styles.css">
     <title>Entrar al sitio</title>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center min-vh-100 bg-light">
-            <div class="col-6">
+            <div class="col-5 p-5">
                 <div class="card p-4">
-                    <h2 class="h2 mb-4 text-center">Municipalidad IT</h2>
+                    <h3 class="text-center text-dark fw-bold">Sistema de registro de incidencias</h2>
+                    <p class="mb-2 text-center text-muted">Gobierno Municipal de la Ciudad</p>
                     <form id="formulario-login">
                         <div class="mb-3">
                             <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario"
                                 autocomplete="username" required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" id="password" name="password" class="form-control"
-                                placeholder="Contraseña" autocomplete="current-password" required>
+                            <div class="input-group">
+                                <input type="password" id="password" name="password" class="form-control"
+                                    placeholder="Contraseña" autocomplete="current-password" required>
+
+                                <button class="btn btn-outline-secondary d-flex align-items-center" type="button"
+                                    id="btn-toggle-password" title="Mostrar/Ocultar contraseña">
+
+                                    <svg id="icon-eye-open" xmlns="http://w3.org" width="16" height="16"
+                                        fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                        <path
+                                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                                    </svg>
+
+                                </button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-2 w-100">Ingresar</button>
+
+
+                        <button type="submit" class="btn nav-btn-bg mt-2 w-100 fw-bold">Iniciar sesión</button>
                     </form>
                 </div>
             </div>

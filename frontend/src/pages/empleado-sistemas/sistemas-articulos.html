@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="sistemas.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Articulos</title>
+</head>
+
+<body>
+    <main>
+        <div class="container-fluid">
+            <div class="row min-vh-100">
+                <div class="col-12 col-md-3 menu-lateral text-center text-md-start sistemas-nav-bg">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
+                        <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                            <span class="fs-4 fw-bold text-white">
+                                <p>MUNI-IT</p>
+                            </span>
+                        </a>
+                        <p class="fs-6 pb-3 mb-0 text-light">Gobierno Municipal de la Ciudad</p>
+                        <p class="fs-6 py-1 mb-0 text-light">NAVEGACIÓN</p>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="./sistemas-incidencias.html" class="nav-link link-dark text-secondary"
+                                    aria-current="page">
+                                    <p class="fs-6 mb-0 off-light">Incidencias asignadas</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./sistemas-categorias.html" class="nav-link link-dark text-secondary">
+                                    <p class="fs-6 mb-0 off-light">Categorías</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link current text-white nav-btn-bg">
+                                    <p class="fs-6 mb-0">Artículos</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 content-bg">
+                    <div class="row bg-white">
+                        <div class="col-12 col-md-9">
+                            <h1 class="fs-3 fs-md-1 p-3">Artículos</h1>
+                        </div>
+                        <div class="col-12 col-md-3 dropdown">
+                            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                                id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <p class="fs-5 fs-md-3">Ing. Ana Gómez</p>
+                            </a>
+                            <p>Soporte en sistemas</p>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex py-2 flex-row-reverse">
+                        <button type="button" class="btn btn-primary align-items-center" data-bs-toggle="modal"
+                            data-bs-target="#modalNuevoArticulo"> Crear nuevo articulo </button>
+                    </div>
+                    <div class="bg-white px-4 py-1 rounded-3">
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID Artículo</th>
+                                        <th scope="col">ID Área</th>
+                                        <th scope="col">Categoría</th>
+                                        <th scope="col">Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-articulos">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal fade" id="modalNuevoArticulo" tabindex="-1" aria-labelledby="modalNuevoArticuloLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold fs-5" id="modalNuevoArticuloLabel">Registrar Nuevo Articulo</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <form id="formNuevoArticulo">
+
+                        <div class="mb-3">
+                            <label for="articulo-descripcion" class="form-label fw-semibold text-secondary ">Descripción
+                                del artículo</label>
+                            <textarea id="articulo-descripcion" class="form-control" rows="2"
+                                placeholder="Describe el artículo..." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary small">ID de Categoría / Código</label>
+                            <div class="input-group">
+                                <input type="number" min="0" id="articulo-categoria-id" class="form-control"
+                                    placeholder="Ej: 5" required>
+                                <a href="./sistemas-categorias.html" class="btn btn-secondary fw-semibold">
+                                    <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="articulo-area" class="form-label fw-semibold text-secondary small">Area a la que
+                                corresponde</label>
+                            <select id="articulo-area" class="form-select" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Sistemas">Sistemas</option>
+                                <option value="Mesa-Entrada">Mesa de entrada</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary fw-semibold"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="formNuevoArticulo" class="btn btn-primary fw-bold px-4">Guardar
+                        artículo</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

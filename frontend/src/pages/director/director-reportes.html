@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="director-reportes.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Reportes</title>
+</head>
+
+<body>
+    <main>
+        <div class="container-fluid">
+            <div class="row min-vh-100">
+                <div class="col-12 col-md-3 menu-lateral text-center text-md-start director-nav-bg">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
+                        <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                            <span class="fs-4 fw-bold text-white">
+                                <p>MUNI-IT</p>
+                            </span>
+                        </a>
+                        <p class="fs-6 pb-3 mb-0 text-light">Gobierno Municipal de la Ciudad</p>
+                        <p class="fs-6 py-1 mb-0 text-light">NAVEGACIÓN</p>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="./director-dashboard.html" class="nav-link link-dark text-secondary"
+                                    aria-current="page">
+                                    <p class="fs-6 mb-0">Dashboard</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./director-incidencias.html" class="nav-link link-dark text-secondary">
+                                    <p class="fs-6 mb-0 off-light">Incidencias</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link current text-white nav-btn-bg">
+                                    <p class="fs-6 mb-0 off-light">Reportes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 content-bg">
+                    <div class="row mb-2 bg-white">
+                        <div class="col-12 col-md-9">
+                            <h1 class="fs-3 fs-md-1 p-3">Panel de reportes</h1>
+                        </div>
+                        <div class="col-12 col-md-3 dropdown">
+                            <div class="p-1">
+                                <a href="#"
+                                    class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                                    id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <p class="fs-5 fs-md-3">Pedro primero</p>
+                                </a>
+                                <p class="fs-5 fs-md-3">Director municipal</p>
+                                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white px-4 py-1 rounded-3">
+                        <div class="row">
+                            <h2 class="fs-3 fw-bold text-dark mt-2">Generación de reportes</h2>
+                            <p class="text-muted">Configura los parámetros para exportar las estadísticas de
+                                incidencias.
+                            </p>
+
+                            <form class="row g-3" id="formReporte">
+                                <div class="col-12 col-md-6">
+                                    <label for="fecha-desde" class="form-label fw-semibold text-secondary small">Fecha
+                                        desde</label>
+                                    <input type="date" id="fecha-desde" class="form-control" required>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="fecha-hasta" class="form-label fw-semibold text-secondary small">Fecha
+                                        hasta</label>
+                                    <input type="date" id="fecha-hasta" class="form-control" required>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="estado" class="form-label fw-semibold text-secondary small">Estado de
+                                        incidencia</label>
+                                    <select id="estado" class="form-select">
+                                        <option value="todos">Todos los estados</option>
+                                        <option value="pendiente">Pendientes</option>
+                                        <option value="proceso">En Proceso</option>
+                                        <option value="finalizada">Finalizadas</option>
+                                        <option value="cancelada">Canceladas</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="prioridad"
+                                        class="form-label fw-semibold text-secondary small">Prioridad</label>
+                                    <select id="prioridad" class="form-select">
+                                        <option value="todas">Todas las prioridades</option>
+                                        <option value="alta">Alta</option>
+                                        <option value="media">Media</option>
+                                        <option value="baja">Baja</option>
+                                    </select>
+                                </div>
+
+                            </form>
+
+                            <div class="col-12 mt-4 mb-2">
+                                <button type="submit" form="formReporte"
+                                    class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                                    Generar reporte en PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

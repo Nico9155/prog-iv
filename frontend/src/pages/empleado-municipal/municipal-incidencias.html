@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="municipal-incidencias.js"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Incidencias</title>
+</head>
+
+<body>
+  <main>
+    <div class="container-fluid">
+      <div class="row min-vh-100">
+        <div class="col-12 col-md-3 menu-lateral text-center text-md-start municipal-nav-bg">
+          <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
+            <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+              <span class="fs-4 fw-bold text-white">
+                <p>MUNI-IT</p>
+              </span>
+            </a>
+            <p class="fs-6 pb-3 mb-0 text-light">Gobierno Municipal de la Ciudad</p>
+            <p class="fs-6 py-1 mb-0 text-light">NAVEGACIÓN</p>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link current text-white nav-btn-bg" aria-current="page">
+                  Mis incidencias
+                </a>
+              </li>
+              <li>
+                <a href="./municipal-articulos.html" class="nav-link link-dark text-secondary">
+                  Artículos
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-9 content-bg">
+          <div class="row bg-white">
+            <div class="col-12 col-md-9">
+              <h1 class="fs-3 fs-md-1 p-3">Mis incidencias</h1>
+            </div>
+            <div class="col-12 col-md-3 dropdown">
+              <div class="p-1">
+                <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                  id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                  Juan José
+                </a>
+                <p class="fs-5 fs-md-3">Empleado municipal</p>
+                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                  <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex py-2 flex-row-reverse">
+            <button type="button" class="btn btn-primary align-items-center" data-bs-toggle="modal"
+              data-bs-target="#modalNuevaIncidencia"> Crear nueva incidencia </button>
+          </div>
+          <div class="bg-white px-4 py-1 rounded-3">
+          <div class="row">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Número</th>
+                  <th scope="col">Creada el</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Detalle</th>
+                  <th scope="col">Prioridad</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-incidencias">
+
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="modal fade" id="modalNuevaIncidencia" tabindex="-1" aria-labelledby="modalNuevaIncidenciaLabel">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title fw-bold fs-5" id="modalNuevaIncidenciaLabel">Registrar Nueva Incidencia</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="formNuevaIncidencia">
+
+            <div class="mb-3">
+              <label for="incidencia-nombre" class="form-label fw-semibold text-secondary small">Nombre / Título
+                corto</label>
+              <input type="text" id="incidencia-nombre" class="form-control"
+                placeholder="Ej: Error en servidor de base de datos" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="incidencia-detalle" class="form-label fw-semibold text-secondary ">Detalle del
+                problema</label>
+              <textarea id="incidencia-detalle" class="form-control" rows="4"
+                placeholder="Describe detalladamente la falla detectada..." required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold text-secondary small">ID de Artículo / Código</label>
+              <div class="input-group">
+                <input type="number" min="0" id="incidencia-articulo-id" class="form-control" placeholder="Ej: 174" required>
+                <a href="./municipal-articulos.html" class="btn btn-secondary fw-semibold">
+                  <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="incidencia-prioridad" class="form-label fw-semibold text-secondary small">Prioridad</label>
+              <select id="incidencia-prioridad" class="form-select" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="baja">Baja</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+              </select>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="modal-footer bg-light border-0">
+          <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" form="formNuevaIncidencia" class="btn btn-primary fw-bold px-4">Guardar
+            Incidencia</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
