@@ -7,14 +7,13 @@ import pg from 'pg';
 const { Pool } = pg;
 
 const app = express();
-const PORT = 3000;
-
+const PORT = process.env.PORT ;
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'incidencias_db',
-    password: 'nico2004',
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
 
 const __filename = fileURLToPath(import.meta.url);

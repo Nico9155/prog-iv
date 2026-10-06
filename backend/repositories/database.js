@@ -1,14 +1,13 @@
 // Configuración y conexión de Base de Datos
-//Este archivo hace de conexion con el .env , aca depues en vez de poner las claves ponemos la conexion entre este y el .env 
-//agregarla a .gitignore
 
+import 'dotenv/config';
 import pg from 'pg';
 const { Pool } = pg;
 
 export const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'incidencias_db',
-    password: '', //Aca cada uno tiene que poner su contraseña del pgadmin
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
