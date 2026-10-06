@@ -1,5 +1,7 @@
 // Configuración y conexión de Base de Datos
-//Este archivo lo tendriamos que cambiar al final de todo por un .env y agregarla a .gitignore
+//Este archivo hace de conexion con el .env , aca depues en vez de poner las claves ponemos la conexion entre este y el .env 
+//agregarla a .gitignore
+
 import pg from 'pg';
 const { Pool } = pg;
 

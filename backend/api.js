@@ -83,6 +83,101 @@ app.get('/api/usuarios', async (req, res) => {
     }
 });
 
+
+//Bread de categoria para la primera entrega!!
+
+// Browse: Listar todas las categorias activas
+app.get('/api/categorias', async (req, res) => {
+    try {
+        const sql = `
+            SELECT id_categoria, descripcion, activo 
+            FROM categorias 
+            WHERE activo = 1 
+            ORDER BY id_categoria ASC;
+        `;
+        const { rows } = await pool.query(sql);
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener categorias' });
+    }
+});
+
+// Read: categoria por ID
+app.get('/api/categorias/:id', async (req, res) => {
+    try {
+        const sql = `
+            SELECT id_categoria, descripcion, activo 
+            FROM categorias 
+            WHERE id_categoria = $1 AND activo = 1;
+        `;
+        const { rows } = await pool.query(sql, [req.params.id]);
+        if (rows.length === 0) {
+            return res.status(404).json({ error: 'Categoria no encontrada' });
+        }
+        res.status(200).json(rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener categoria' });
+    }
+});
+
+// Add: Crear nueva categoria
+app.post('/api/categorias', async (req, res) => {
+    try {
+        const sql = `
+            INSERT INTO categorias (descripcion, activo) 
+            VALUES ($1, $2) 
+            RETURNING *;
+        `;
+        const { rows } = await pool.query(sql, [req.body.descripcion, 1]);
+        res.status(201).json(rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al crear categoria' });
+    }
+});
+
+// Edit: Actualizar categoria existente
+app.put('/api/categorias/:id', async (req, res) => {
+    try {
+        const sql = `
+            UPDATE categorias 
+            SET descripcion = $1 
+            WHERE id_categoria = $2 
+            RETURNING *;
+        `;
+        const { rows } = await pool.query(sql, [req.body.descripcion, req.params.id]);
+        if (rows.length === 0) {
+            return res.status(404).json({ error: 'Categoria no encontrada' });
+        }
+        res.status(200).json(rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al actualizar categoria' });
+    }
+});
+
+// Delete: Baja logica (activo = 0)
+app.delete('/api/categorias/:id', async (req, res) => {
+    try {
+        const sql = `
+            UPDATE categorias 
+            SET activo = 0 
+            WHERE id_categoria = $1 
+            RETURNING *;
+        `;
+        const { rows } = await pool.query(sql, [req.params.id]);
+        if (rows.length === 0) {
+            return res.status(404).json({ error: 'Categoria no encontrada' });
+        }
+        res.status(200).json({ message: 'Categoria eliminada con exito' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al eliminar categoria' });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`🚀 Servidor API seguro escuchando en http://localhost:${PORT}`);
 });
