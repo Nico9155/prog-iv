@@ -1,0 +1,29 @@
+.ocultar-movil {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .ocultar-movil {
+    display: none !important; /* Desaparece por completo en celulares */
+  }
+}
+
+.nav-btn-bg {
+  background-color: #0D9488 !important;
+}
+
+.content-bg {
+  background-color: #F1F5F9;
+}
+
+.municipal-nav-bg {
+  background-color: #0F172A;
+}
+
+.director-nav-bg {
+  background-color: #100E24;
+}
+
+.sistemas-nav-bg {
+  background-color: #0F191D;
+}

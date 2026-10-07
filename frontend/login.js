@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!formulario) return;
 
+    configurarAlternarContrasenia();
+
     formulario.addEventListener('submit', async (event) => {
         event.preventDefault(); 
 
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
+
             const respuesta = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
@@ -47,3 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function configurarAlternarContrasenia() {
+    const btnPassword = document.getElementById('btn-toggle-password');
+    const passwordInput = document.getElementById('password');
+
+    if (!btnPassword || !passwordInput) return;
+
+    btnPassword.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+}

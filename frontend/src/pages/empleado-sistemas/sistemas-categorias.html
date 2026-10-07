@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="sistemas.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Categorias</title>
+</head>
+
+<body>
+    <main>
+        <div class="container-fluid">
+            <div class="row min-vh-100">
+                <div class="col-12 col-md-3 menu-lateral text-center text-md-start sistemas-nav-bg">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
+                        <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                            <span class="fs-4 fw-bold text-white">
+                                <p>MUNI-IT</p>
+                            </span>
+                        </a>
+                        <p class="fs-6 pb-3 mb-0 text-light">Gobierno Municipal de la Ciudad</p>
+                        <p class="fs-6 py-1 mb-0 text-light">NAVEGACIÓN</p>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="./sistemas-incidencias.html" class="nav-link link-dark text-secondary"
+                                    aria-current="page">
+                                    <p class="fs-6 mb-0 off-light">Incidencias asignadas</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link current text-white nav-btn-bg">
+                                    <p class="fs-6 mb-0">Categorías</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./sistemas-articulos.html" class="nav-link link-dark text-secondary">
+                                    <p class="fs-6 mb-0 off-light">Artículos</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 content-bg">
+                    <div class="row bg-white">
+                        <div class="col-12 col-md-9">
+                            <h1 class="fs-3 fs-md-1 p-3">Categorías</h1>
+                        </div>
+                        <div class="col-12 col-md-3 dropdown">
+                            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                                id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <p class="fs-5 fs-md-3">Ing. Ana Gómez</p>
+                            </a>
+                            <p>Soporte en sistemas</p>
+                            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                                <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex py-2 flex-row-reverse">
+                        <button type="button" class="btn btn-primary align-items-center" data-bs-toggle="modal"
+                            data-bs-target="#modalNuevaCategoria"> Crear nueva categoría </button>
+                    </div>
+                    <div class="bg-white px-4 py-1 rounded-3">
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Número ID</th>
+                                        <th scope="col">Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-categorias">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal fade" id="modalNuevaCategoria" tabindex="-1" aria-labelledby="modalNuevaCategoriaLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold fs-5" id="modalNuevaCategoriaLabel">Registrar Nueva Categoría</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <form id="formNuevaCategoria">
+
+                        <div class="mb-3">
+                            <label for="categoria-descripcion"
+                                class="form-label fw-semibold text-secondary ">Descripción
+                                de la categoría</label>
+                            <textarea id="categoria-descripcion" class="form-control" rows="1"
+                                placeholder="Ej: Cables / Periféricos..." required></textarea>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary fw-semibold"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="formNuevaCategoria" class="btn btn-primary fw-bold px-4">Guardar
+                        categoría</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="director.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <main>
+        <div class="container-fluid">
+            <div class="row min-vh-100">
+                <div class="col-12 col-md-3 menu-lateral text-center text-md-start director-nav-bg">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
+                        <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                            <span class="fs-4 fw-bold text-white">
+                                <p>MUNI-IT</p>
+                            </span>
+                        </a>
+                        <p class="fs-6 pb-3 mb-0 text-light">Gobierno Municipal de la Ciudad</p>
+                        <p class="fs-6 py-1 mb-0 text-light">NAVEGACIÓN</p>
+                        <ul class="nav nav-pills flex-column mb-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link current text-white nav-btn-bg" aria-current="page">
+                                    <p class="fs-6 mb-0">Dashboard</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./director-incidencias.html" class="nav-link link-dark text-secondary">
+                                    <p class="fs-6 mb-0 off-light">Incidencias</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./director-reportes.html" class="nav-link link-dark text-secondary">
+                                    <p class="fs-6 mb-0 off-light">Reportes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 content-bg">
+                    <div class="row mb-2 bg-white">
+                        <div class="col-12 col-md-9">
+                            <h1 class="fs-3 fs-md-1 p-3">Panel de estadísticas</h1>
+                        </div>
+                        <div class="col-12 col-md-3 dropdown">
+                            <div class="p-1">
+                                <a href="#"
+                                    class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                                    id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <p class="fs-5 fs-md-3">Pedro primero</p>
+                                </a>
+                                <p class="fs-5 fs-md-3">Director municipal</p>
+                                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white px-4 py-1 rounded-3">
+                    <div class="row">
+                        <div class="row">
+                            <h2>Estadísticas por tipo</h2>
+                            <div class="col-md-6">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Tipo de incidencia</th>
+                                            <th scope="col">Cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla-incidencias-estados">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6 ocultar-movil">
+                                <p>Gráfico circular</p>
+                            </div>
+                        </div>
+                        <div class="row my-auto py-auto">
+                            <h2 class="my-auto py-auto">Estadísticas por fecha</h2>
+                            <p>Por defecto los últimos 7 días</p>
+                            <div class="col-md-6">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Total de incidencias</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla-incidencias-fechas">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6 ocultar-movil">
+                                <p>Gráfico mes/cantidad estadísticas</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2>Incidencias prioritarias</h2>
+                            <div class="col-12 col-md-12">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Número de incidencia</th>
+                                            <th scope="col">Empleados asignados</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
