@@ -1,1 +1,0 @@
-// Transformación al listar (GET)
