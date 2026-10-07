@@ -1,6 +1,6 @@
-// Acceso a datos de Categorías
 import { pool } from './database.js';
-// 1. Browse (Listar todas las categorías activas)
+
+// 1Browse (Listar todas las categorías activas)
 export const getAllCategorias = async () => {
     const sql = `
         SELECT id_categoria, descripcion, activo 
@@ -12,7 +12,7 @@ export const getAllCategorias = async () => {
     return rows;
 };
 
-// 2. Read (Obtener categoría por su ID)
+// 2 Eead (Obtener categoría por su ID)
 export const getCategoriaPorId = async (id) => {
     const sql = `
         SELECT id_categoria, descripcion, activo 
@@ -20,39 +20,40 @@ export const getCategoriaPorId = async (id) => {
         WHERE id_categoria = $1 AND activo = 1;
     `;
     const { rows } = await pool.query(sql, [id]);
-    return rows[0] || null; 
+    return rows[0] || null;
 };
 
-// 3. Add (Crear una categoría)
-export const createCategoria = async (categoriaData) => {
+// 3. Add (Crear una categoría - Setea activo en 1)
+export const createCategoria = async (descripcion) => {
     const sql = `
         INSERT INTO categorias (descripcion, activo) 
-        VALUES ($1, $2) 
+        VALUES ($1, 1) 
         RETURNING *;
     `;
-    const { rows } = await pool.query(sql, [categoriaData.descripcion, categoriaData.activo]);
-    return rows[0]; // Devuelve la categoría recién creada
+    const { rows } = await pool.query(sql, [descripcion]);
+    return rows[0] || null;
 };
 
 // 4. Edit (Actualizar una categoría existente)
-export const updateCategoria = async (id, categoriaData) => {
+export const updateCategoria = async (id, descripcion) => {
     const sql = `
         UPDATE categorias 
         SET descripcion = $1 
-        WHERE id_categoria = $2 
+        WHERE id_categoria = $2 AND activo = 1
         RETURNING *;
     `;
-    const { rows } = await pool.query(sql, [categoriaData.descripcion, id]);
+    const { rows } = await pool.query(sql, [descripcion, id]);
     return rows[0] || null;
 };
+
 // 5. Delete (Soft Delete)
 export const deleteCategoria = async (id) => {
     const sql = `
         UPDATE categorias 
         SET activo = 0 
-        WHERE id_categoria = $1 
+        WHERE id_categoria = $1 AND activo = 1
         RETURNING *;
     `;
     const { rows } = await pool.query(sql, [id]);
-    return rows[0] || null; // 
+    return rows[0] || null;
 };
