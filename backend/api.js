@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { pool } from './repositories/database.js';
-import categoriasRouter from './routes/categorias.routes.js'; // Tus nuevas rutas por capas
+import categoriasRouter from './routes/categorias.routes.js';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
 
 const app = express();
 const PORT = process.env.PORT;
@@ -13,8 +15,62 @@ app.use(cors({
     credentials: true
 }));
 
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'API Municipal de Incidencias',
+            version: '1.0.0',
+            description: 'Documentación de los endpoints del backend',
+        },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                }
+            }
+        },
+        security: [{
+            bearerAuth: []
+        }]
+    },
+    apis: ['./api.js', './routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs)); 
+
 app.use('/api/categorias', categoriasRouter);
 
+/**
+ * @swagger
+ * /api/login:
+ *   post:
+ *     summary: iniciar sesión en el sistema 
+ *     tags: [Autenticación]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               usuario:
+ *                 type: string
+ *                 example: admin_municipal
+ *               password:
+ *                 type: string
+ *                 example: Segura123
+ *     responses:
+ *       200:
+ *         description: autenticación exitosa
+ *       401:
+ *         description: usuario o contraseña incorrectos
+ *       500:
+ *         description: error interno en el servidor
+ */
 app.post('/api/login', async (req, res) => {
     try {
         const { usuario, password } = req.body;
@@ -52,6 +108,18 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /api/usuarios:
+ *   get:
+ *     summary: obtiene la lista completa de empleados
+ *     tags: [Empleados]
+ *     responses:
+ *       200:
+ *         description: lista de usuarios obtenida con éxito
+ *       500:
+ *         description: error interno del servidor
+ */
 app.get('/api/usuarios', async (req, res) => {
     try {
         const resultado = await pool.query('SELECT id_usuario, nombres, apellidos, usuario, rol, activo FROM usuarios');
