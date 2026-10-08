@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="sistemas.js"></script>
+    <script type="module" src="sistemas-categorias.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Categorias</title>
+    <title>Categorías</title>
 </head>
 
 <body>
@@ -43,6 +43,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-12 col-md-9 content-bg">
                     <div class="row bg-white">
                         <div class="col-12 col-md-9">
@@ -59,10 +60,12 @@
                             </ul>
                         </div>
                     </div>
+                    
                     <div class="d-flex py-2 flex-row-reverse">
                         <button type="button" class="btn btn-primary align-items-center" data-bs-toggle="modal"
                             data-bs-target="#modalNuevaCategoria"> Crear nueva categoría </button>
                     </div>
+
                     <div class="bg-white px-4 py-1 rounded-3">
                         <div class="row">
                             <table class="table">
@@ -70,10 +73,10 @@
                                     <tr>
                                         <th scope="col">Número ID</th>
                                         <th scope="col">Descripción</th>
+                                        <th scope="col" class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tabla-categorias">
-
                                 </tbody>
                             </table>
                         </div>
@@ -82,37 +85,51 @@
             </div>
         </div>
     </main>
+
     <div class="modal fade" id="modalNuevaCategoria" tabindex="-1" aria-labelledby="modalNuevaCategoriaLabel">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
-
                 <div class="modal-header bg-dark text-white">
                     <h5 class="modal-title fw-bold fs-5" id="modalNuevaCategoriaLabel">Registrar Nueva Categoría</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-
                 <div class="modal-body p-4">
                     <form id="formNuevaCategoria">
-
                         <div class="mb-3">
-                            <label for="categoria-descripcion"
-                                class="form-label fw-semibold text-secondary ">Descripción
-                                de la categoría</label>
-                            <textarea id="categoria-descripcion" class="form-control" rows="1"
-                                placeholder="Ej: Cables / Periféricos..." required></textarea>
+                            <label for="categoria-descripcion" class="form-label fw-semibold text-secondary">Descripción de la categoría</label>
+                            <textarea id="categoria-descripcion" class="form-control" rows="1" placeholder="Ej: Cables / Periféricos..." required></textarea>
                         </div>
-
                     </form>
                 </div>
-
                 <div class="modal-footer bg-light border-0">
-                    <button type="button" class="btn btn-secondary fw-semibold"
-                        data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" form="formNuevaCategoria" class="btn btn-primary fw-bold px-4">Guardar
-                        categoría</button>
+                    <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="formNuevaCategoria" class="btn btn-primary fw-bold px-4">Guardar categoría</button>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="modalEditarCategoria" tabindex="-1" aria-labelledby="modalEditarCategoriaLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title fw-bold fs-5" id="modalEditarCategoriaLabel">Modificar Categoría</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formEditarCategoria">
+                        <input type="hidden" id="edit-categoria-id">
+                        <div class="mb-3">
+                            <label for="edit-categoria-descripcion" class="form-label fw-semibold text-secondary">Descripción de la categoría</label>
+                            <textarea id="edit-categoria-descripcion" class="form-control" rows="1" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="formEditarCategoria" class="btn btn-primary fw-bold px-4">Actualizar cambios</button>
+                </div>
             </div>
         </div>
     </div>

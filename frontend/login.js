@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const usuarioInput = document.getElementById('usuario');
         const passwordInput = document.getElementById('password');
-
-        /*
         const botonSubmit = formulario.querySelector('button[type="submit"]');
-        botonSubmit.disabled = true;
-        botonSubmit.textContent = 'Verificando...';
-        */
+
+        if (botonSubmit) {
+            botonSubmit.disabled = true;
+            botonSubmit.textContent = 'Verificando...';
+        }
 
         const datosLogin = {
             usuario: usuarioInput.value.trim(),
@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-
-            const respuesta = await fetch('/api/login', {
+            const respuesta = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const resultado = await respuesta.json();
 
             if (respuesta.ok && resultado.success) {
-                window.location.href = '/pages/municipal/municipales.html'; 
+                window.location.href = '/src/pages/empleado-sistemas/sistemas-categorias.html'; 
             } else {
                 alert(resultado.message || 'Usuario o contraseña incorrectos.');
                 passwordInput.value = '';
@@ -45,8 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error en la comunicación con el servidor:', error);
             alert('Ocurrió un error en el servidor. Inténtelo más tarde.');
         } finally {
-            botonSubmit.disabled = false;
-            botonSubmit.textContent = 'Ingresar';
+            if (botonSubmit) {
+                botonSubmit.disabled = false;
+                botonSubmit.textContent = 'Ingresar';
+            }
         }
     });
 });
