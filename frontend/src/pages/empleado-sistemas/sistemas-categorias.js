@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formEditar) {
         formEditar.addEventListener('submit', guardarEdicionCategoria);
     }
+
+    const formBuscar = document.getElementById('formBuscarCategoria');
+    if (formBuscar) {
+        formBuscar.addEventListener('submit', buscarCategoria);
+    }
 });
 
 async function cargarCategorias() {
@@ -130,6 +135,7 @@ async function guardarEdicionCategoria(event) {
         alert(`Error al modificar: ${error.message}`);
     }
 }
+
 async function eliminarCategoria(id) {
     if (!confirm('¿Está seguro de que desea eliminar permanentemente esta categoría del sistema municipal?')) return;
 
@@ -147,5 +153,34 @@ async function eliminarCategoria(id) {
         cargarCategorias();
     } catch (error) {
         alert(`Error al eliminar: ${error.message}`);
+    }
+}
+
+async function buscarCategoria(event) {
+    event.preventDefault();
+    const id = document.getElementById('buscar-categoria-id').value;
+    const contenedorResultado = document.getElementById('resultado-busqueda');
+    const contenedorError = document.getElementById('error-busqueda');
+
+    contenedorResultado.classList.add('d-none');
+    contenedorError.classList.add('d-none');
+
+    try {
+        const respuesta = await fetch(`${API_URL}/${id}`);
+        
+        if (!respuesta.ok) {
+            const errData = await respuesta.json();
+            throw new Error(errData.error || 'No se pudo procesar la búsqueda.');
+        }
+
+        const categoria = await respuesta.json();
+
+        document.getElementById('res-categoria-id').textContent = categoria.idCategoria || categoria.id;
+        document.getElementById('res-categoria-descripcion').textContent = categoria.descripcion;
+        
+        contenedorResultado.classList.remove('d-none');
+    } catch (error) {
+        contenedorError.textContent = error.message;
+        contenedorError.classList.remove('d-none');
     }
 }
