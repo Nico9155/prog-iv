@@ -1,3 +1,5 @@
+import { redirigirSegunRol } from './src/js/sesion.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.querySelector('#formulario-login');
 
@@ -6,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     configurarAlternarContrasenia();
 
     formulario.addEventListener('submit', async (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
         const usuarioInput = document.getElementById('usuario');
         const passwordInput = document.getElementById('password');
@@ -19,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const datosLogin = {
             usuario: usuarioInput.value.trim(),
-            password: passwordInput.value
+            contrasenia: passwordInput.value
         };
 
         try {
-            const respuesta = await fetch('http://localhost:3000/api/login', {
+            const respuesta = await fetch('http://localhost:3000/api/v1/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,10 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const resultado = await respuesta.json();
 
-            if (respuesta.ok && resultado.success) {
-                window.location.href = '/src/pages/empleado-sistemas/sistemas-categorias.html'; 
+            if (respuesta.ok && resultado.token) {
+                sessionStorage.setItem('token', resultado.token);
+                sessionStorage.setItem('usuario', JSON.stringify(resultado.usuario));
+                redirigirSegunRol(Number(resultado.usuario.rol));
             } else {
-                alert(resultado.message || 'Usuario o contraseña incorrectos.');
+                alert(resultado.mensaje || 'Usuario o contraseña incorrectos.');
                 passwordInput.value = '';
             }
 
@@ -46,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } finally {
             if (botonSubmit) {
                 botonSubmit.disabled = false;
-                botonSubmit.textContent = 'Ingresar';
+                botonSubmit.textContent = 'Iniciar sesión';
             }
         }
     });

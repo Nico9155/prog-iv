@@ -7,7 +7,7 @@
   <script type="module" src="/src/main.js"></script>
   <script type="module" src="municipal-incidencias.js"></script>
   <link rel="stylesheet" href="../css/styles.css">
-  <title>Incidencias</title>
+  <title>Mis Incidencias</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
       <div class="row min-vh-100">
         <div class="col-12 col-md-3 menu-lateral text-center text-md-start municipal-nav-bg">
           <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
-            <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+            <a href="#" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
               <span class="fs-4 fw-bold text-white">
                 <p>MUNI-IT</p>
               </span>
@@ -46,11 +46,11 @@
               <div class="p-1">
                 <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                   id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                  Juan José
+                  <span id="navbar-nombre-usuario" class="fs-6 fw-semibold"></span>
                 </a>
-                <p class="fs-5 fs-md-3">Empleado municipal</p>
+                <p id="navbar-rol-usuario" class="small text-muted mb-0"></p>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                  <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                  <li><a class="dropdown-item" href="#" id="btn-cerrar-sesion">Cerrar sesión</a></li>
                 </ul>
               </div>
             </div>
@@ -60,29 +60,30 @@
               data-bs-target="#modalNuevaIncidencia"> Crear nueva incidencia </button>
           </div>
           <div class="bg-white px-4 py-1 rounded-3">
-          <div class="row">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Número</th>
-                  <th scope="col">Creada el</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Detalle</th>
-                  <th scope="col">Prioridad</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">Acciones</th>
-                </tr>
-              </thead>
-              <tbody id="tabla-incidencias">
+            <div class="row table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Número</th>
+                    <th scope="col">Creada el</th>
+                    <th scope="col">Artículo</th>
+                    <th scope="col">Detalle del pedido</th>
+                    <th scope="col">Prioridad</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col" class="text-center">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla-incidencias">
 
-              </tbody>
-            </table>
-          </div>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
+
   <div class="modal fade" id="modalNuevaIncidencia" tabindex="-1" aria-labelledby="modalNuevaIncidenciaLabel">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow">
@@ -96,40 +97,25 @@
           <form id="formNuevaIncidencia">
 
             <div class="mb-3">
-              <label for="incidencia-nombre" class="form-label fw-semibold text-secondary small">Nombre / Título
-                corto</label>
-              <input type="text" id="incidencia-nombre" class="form-control"
-                placeholder="Ej: Error en servidor de base de datos" required>
+              <label for="incidencia-articulo-id" class="form-label fw-semibold text-secondary small">Artículo afectado</label>
+              <select id="incidencia-articulo-id" class="form-select" required>
+                <option value="" disabled selected>Selecciona un artículo</option>
+              </select>
             </div>
 
             <div class="mb-3">
-              <label for="incidencia-detalle" class="form-label fw-semibold text-secondary ">Detalle del
-                problema</label>
+              <label for="incidencia-detalle" class="form-label fw-semibold text-secondary">Detalle del problema</label>
               <textarea id="incidencia-detalle" class="form-control" rows="4"
                 placeholder="Describe detalladamente la falla detectada..." required></textarea>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label fw-semibold text-secondary small">ID de Artículo / Código</label>
-              <div class="input-group">
-                <input type="number" min="0" id="incidencia-articulo-id" class="form-control" placeholder="Ej: 174" required>
-                <a href="./municipal-articulos.html" class="btn btn-secondary fw-semibold">
-                  <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" class="bi bi-search"
-                    viewBox="0 0 16 16">
-                    <path
-                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                  </svg>
-                </a>
-              </div>
             </div>
 
             <div class="mb-3">
               <label for="incidencia-prioridad" class="form-label fw-semibold text-secondary small">Prioridad</label>
               <select id="incidencia-prioridad" class="form-select" required>
                 <option value="" disabled selected>Selecciona una opción</option>
-                <option value="baja">Baja</option>
-                <option value="media">Media</option>
-                <option value="alta">Alta</option>
+                <option value="1">1 - Baja</option>
+                <option value="2">2 - Media</option>
+                <option value="3">3 - Alta</option>
               </select>
             </div>
 

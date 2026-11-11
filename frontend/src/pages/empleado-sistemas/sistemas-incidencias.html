@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="sistemas-incidencias.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Incidencias</title>
+    <title>Incidencias Asignadas</title>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
             <div class="row min-vh-100">
                 <div class="col-12 col-md-3 menu-lateral text-center text-md-start sistemas-nav-bg">
                     <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
-                        <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                        <a href="#" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
                             <span class="fs-4 fw-bold text-white">
                                 <p>MUNI-IT</p>
                             </span>
@@ -51,39 +52,66 @@
                                 <a href="#"
                                     class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                                     id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <p class="fs-5 fs-md-3">Ing. Ana Gómez</p>
+                                    <span id="navbar-nombre-usuario" class="fs-6 fw-semibold"></span>
                                 </a>
-                                <p class="fs-5 fs-md-3">Soporte en sistemas</p>
+                                <p id="navbar-rol-usuario" class="small text-muted mb-0"></p>
                                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item" href="#" id="btn-cerrar-sesion">Cerrar sesión</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="bg-white px-4 py-1 rounded-3">
-                    <div class="row">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Número</th>
-                                    <th scope="col">Creada el</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Detalle</th>
-                                    <th scope="col">Prioridad</th>
-                                    <th scope="col">Estado</th>
-                                    <th scope="col">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabla-incidencias">
+                        <div class="row table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Número</th>
+                                        <th scope="col">Creada el</th>
+                                        <th scope="col">Artículo</th>
+                                        <th scope="col">Detalle</th>
+                                        <th scope="col">Prioridad</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col" class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-incidencias">
 
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Modal Finalizar Incidencia -->
+    <div class="modal fade" id="modalFinalizarIncidencia" tabindex="-1" aria-labelledby="modalFinalizarIncidenciaLabel">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title fw-bold fs-5" id="modalFinalizarIncidenciaLabel">Finalizar Incidencia</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formFinalizarIncidencia">
+                        <input type="hidden" id="finalizar-incidencia-id">
+                        <div class="mb-3">
+                            <label for="finalizar-resolucion" class="form-label fw-semibold text-secondary">Descripción de la resolución</label>
+                            <textarea id="finalizar-resolucion" class="form-control" rows="3"
+                                placeholder="Detalle el trabajo técnico realizado para resolver la incidencia..." required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="formFinalizarIncidencia" class="btn btn-success fw-bold px-4">Confirmar Finalización</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

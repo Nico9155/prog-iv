@@ -1,47 +1,33 @@
-// Traer la fecha de la primer incidencia y que este sea el mínimo
+import { inicializarSesion, obtenerHeadersAuth } from '../../js/sesion.js';
 
-// Control de fecha en director-reportes
+const API_INFORME = 'http://localhost:3000/api/v1/incidencias/informe';
+
 document.addEventListener("DOMContentLoaded", () => {
-    try {
-        const fechaDesde = document.getElementById("fecha-desde");
-        const fechaHasta = document.getElementById("fecha-hasta");
+    const usuario = inicializarSesion([1]);
+    if (!usuario) return;
 
-        controlarFechas(fechaDesde, fechaHasta);
-    } catch (error) {
-        console.log("Ha ocurrido un error al procesar la página: \n" + error)
+    const btnGenerar = document.getElementById("btnGenerarReporte");
+    if (btnGenerar) {
+        btnGenerar.addEventListener("click", generarReportePdf);
     }
 });
 
-function controlarFechas(fechaDesde, fechaHasta) {
-    // Fecha de hoy (YYYY-MM-DD)
-    const hoy = new Date();
-    const año = hoy.getFullYear();
-    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
-    const dia = String(hoy.getDate()).padStart(2, '0');
-    const fechaHoyFormateada = `${año}-${mes}-${dia}`;
+async function generarReportePdf() {
+    try {
+        const resp = await fetch(API_INFORME, {
+            method: "GET",
+            headers: obtenerHeadersAuth()
+        });
 
-    // Bloquear fechas futuras para ambos campos
-    fechaDesde.max = fechaHoyFormateada;
-    fechaHasta.max = fechaHoyFormateada;
-
-    // Al cambiar "Fecha desde", actualiza el mínimo permitido en "Fecha hasta"
-    fechaDesde.addEventListener("change", () => {
-        fechaHasta.min = fechaDesde.value;
-    });
-
-    // Al cambiar "Fecha hasta", actualiza el máximo permitido en "Fecha desde"
-    fechaDesde.addEventListener("change", () => {
-        if (fechaDesde.value) {
-            fechaHasta.min = fechaDesde.value;
+        if (!resp.ok) {
+            throw new Error("No se pudo generar el reporte PDF.");
         }
-    });
 
-    fechaHasta.addEventListener("change", () => {
-        if (fechaHasta.value) {
-            fechaDesde.max = fechaHasta.value;
-        } else {
-            // Si limpian "Fecha hasta", el tope vuelve a ser el día de hoy
-            fechaDesde.max = fechaHoyFormateada;
-        }
-    });
+        const blob = await resp.blob();
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, "_blank");
+    } catch (error) {
+        console.error("Error al generar reporte PDF:", error);
+        alert("Ocurrió un error al generar el reporte PDF.");
+    }
 }

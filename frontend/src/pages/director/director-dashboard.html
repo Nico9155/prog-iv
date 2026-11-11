@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="director-dashboard.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <title>Dashboard</title>
+    <title>Dashboard - Director</title>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
             <div class="row min-vh-100">
                 <div class="col-12 col-md-3 menu-lateral text-center text-md-start director-nav-bg">
                     <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
-                        <a href="/" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
+                        <a href="#" class="d-flex mb-1 mb-md-0 me-md-auto text-decoration-none">
                             <span class="fs-4 fw-bold text-white">
                                 <p>MUNI-IT</p>
                             </span>
@@ -51,70 +52,69 @@
                                 <a href="#"
                                     class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
                                     id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <p class="fs-5 fs-md-3">Pedro primero</p>
+                                    <span id="navbar-nombre-usuario" class="fs-6 fw-semibold"></span>
                                 </a>
-                                <p class="fs-5 fs-md-3">Director municipal</p>
+                                <p id="navbar-rol-usuario" class="small text-muted mb-0"></p>
                                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item" href="#" id="btn-cerrar-sesion">Cerrar sesión</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white px-4 py-1 rounded-3">
-                    <div class="row">
+                    <div class="bg-white px-4 py-3 rounded-3">
                         <div class="row">
-                            <h2>Estadísticas por tipo</h2>
-                            <div class="col-md-6">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Tipo de incidencia</th>
-                                            <th scope="col">Cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabla-incidencias-estados">
+                            <div class="row mb-4">
+                                <h2 class="fs-4 fw-bold">Totales de incidencias según estados</h2>
+                                <div class="col-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Estado de incidencia</th>
+                                                <th scope="col">Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-incidencias-estados">
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="col-md-6 ocultar-movil">
-                                <p>Gráfico circular</p>
-                            </div>
-                        </div>
-                        <div class="row my-auto py-auto">
-                            <h2 class="my-auto py-auto">Estadísticas por fecha</h2>
-                            <p>Por defecto los últimos 7 días</p>
-                            <div class="col-md-6">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Fecha</th>
-                                            <th scope="col">Total de incidencias</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabla-incidencias-fechas">
+                            <div class="row my-auto py-auto mb-4">
+                                <h2 class="fs-4 fw-bold my-auto py-auto">Totales de incidencias por fecha</h2>
+                                <div class="col-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Total de incidencias</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-incidencias-fechas">
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="col-md-6 ocultar-movil">
-                                <p>Gráfico mes/cantidad estadísticas</p>
+                            <div class="row">
+                                <h2 class="fs-4 fw-bold">Incidencias prioritarias / pendientes</h2>
+                                <div class="col-12 col-md-12 table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Número</th>
+                                                <th scope="col">Artículo</th>
+                                                <th scope="col">Detalle</th>
+                                                <th scope="col">Empleado asignado</th>
+                                                <th scope="col">Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-incidencias-prioritarias">
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <h2>Incidencias prioritarias</h2>
-                            <div class="col-12 col-md-12">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Número de incidencia</th>
-                                            <th scope="col">Empleados asignados</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>

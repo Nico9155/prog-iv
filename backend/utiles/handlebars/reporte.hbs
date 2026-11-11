@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de Incidencias</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+            margin: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #0D9488;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+        }
+
+        td {
+            border-bottom: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 11px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Informe de Incidencias Municipales</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>NÚMERO</th>
+                <th>CREADA</th>
+                <th>ARTÍCULO</th>
+                <th>PEDIDO</th>
+                <th>ASIGNADA A</th>
+                <th>ESTADO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each incidencias}}
+            <tr>
+                <td>{{this.id_incidencia}}</td>
+                <td>{{this.creada}}</td>
+                <td>{{this.articulo}}</td>
+                <td>{{this.descripcion_pedido}}</td>
+                <td>{{this.asignada_a}}</td>
+                <td>{{this.estado}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <footer>
+      &copy; 2026 - Programación IV - Gestión de Incidencias Municipales
+    </footer>
+</body>
+</html>

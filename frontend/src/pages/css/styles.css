@@ -1,13 +1,3 @@
-.ocultar-movil {
-  display: block;
-}
-
-@media screen and (max-width: 767px) {
-  .ocultar-movil {
-    display: none !important; /* Desaparece por completo en celulares */
-  }
-}
-
 .nav-btn-bg {
   background-color: #0D9488 !important;
 }
